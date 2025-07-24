@@ -8,6 +8,7 @@ import "swiper/css/pagination";
 import "./slider.css";
 
 import images from "./images/images";
+import CustomCursor from "./CustomCursor";
 
 export default function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -81,12 +82,26 @@ export default function App() {
 
       {isOpen && (
         <div className={`fullscreen-overlay ${isAnimating ? "show" : ""}`}>
-          <button className="close-button" onClick={closeFullscreen}>
+          <CustomCursor className="custom-cursor"></CustomCursor>
+          <button
+            className="close-button"
+            onMouseEnter={() => document.body.classList.add("hovering-close")}
+            onMouseLeave={() =>
+              document.body.classList.remove("hovering-close")
+            }
+            onClick={closeFullscreen}
+          >
             <span className="close-icon">×</span>
             <span className="close-text">CLOSE</span>
           </button>
 
-          <div className="custom-pagination"></div>
+          <div
+            className="custom-pagination"
+            onMouseEnter={() => document.body.classList.add("hovering-close")}
+            onMouseLeave={() =>
+              document.body.classList.remove("hovering-close")
+            }
+          ></div>
 
           <Swiper
             ref={swiperRef}
@@ -112,7 +127,14 @@ export default function App() {
 
           {/* Кастомные стрелки */}
           {currentIndex > 0 && (
-            <div className="prev-arrow custom-arrow" onClick={handlePrev}>
+            <div
+              className="prev-arrow custom-arrow"
+              onClick={handlePrev}
+              onMouseEnter={() => document.body.classList.add("hovering-close")}
+              onMouseLeave={() =>
+                document.body.classList.remove("hovering-close")
+              }
+            >
               <svg width="48" height="16" viewBox="0 0 48 16" fill="white">
                 <path d="M0 8c0 .573.2445 1.0865.6305 1.451l-.004.002L8 16 4 8l4-8L.6265 6.547l.004.002C.2445 6.9135 0 7.427 0 8z" />
                 <path d="M47.6636904 7.66132609L.6726191 7.33207746c-.3688836-.00258463-.6700181.29435935-.6726027.66324294A.66977174.66977174 0 0 0 0 8.00000028c0 .36889265.2990466.66793922.6679392.66793922.00156 0 .00312-.00000546.0046799-.00001639l46.9910713-.32924863C47.849809 8.33737042 48 8.18612343 48 8.00000028s-.150191-.33737013-.3363096-.33867419z" />
@@ -121,7 +143,14 @@ export default function App() {
           )}
 
           {currentIndex < sliderImages.length - 1 && (
-            <div className="next-arrow custom-arrow" onClick={handleNext}>
+            <div
+              className="next-arrow custom-arrow"
+              onClick={handleNext}
+              onMouseEnter={() => document.body.classList.add("hovering-close")}
+              onMouseLeave={() =>
+                document.body.classList.remove("hovering-close")
+              }
+            >
               <svg width="48" height="16" viewBox="0 0 48 16" fill="white">
                 <path d="M48 8a1.99 1.99 0 0 1-.63 1.451l.004.002L40 16l4-8-4-8 7.373 6.547-.003.002c.386.364.63.878.63 1.451z" />
                 <path d="M.336 7.661l46.991-.329A.668.668 0 0 1 48 8a.668.668 0 0 1-.673.668l-46.99-.33a.339.339 0 0 1 0-.677z" />

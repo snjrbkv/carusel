@@ -12,6 +12,7 @@ import slider11 from "./slider11.avif";
 import slider12 from "./slider12.avif";
 import slider13 from "./slider13.avif";
 import fullscreen from "./fullscreen.png";
+import cursor from "./cursor.png";
 
 const images = {
   slider1,
@@ -28,6 +29,7 @@ const images = {
   slider12,
   slider13,
   fullscreen,
+  cursor,
 };
 
 export default images;
